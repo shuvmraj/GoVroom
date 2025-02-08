@@ -10,6 +10,7 @@ import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import Contact from "./components/Contact";
 import LoginPage from "./components/Login";
+import Register from "./components/Register";
 
 
 function App() {
@@ -19,11 +20,14 @@ function App() {
         <NavBar />
         <div className="flex-grow pt-16 pb-12"> {/* Add padding for fixed navbar and footer */}
           <Routes>
+            <Route path="/login" element={<LoginPage  />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/" element={<Hero />} />
             <Route path="/about" element={<About />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/contact" element={<Contact  />} />
-            <Route path="/login" element={<LoginPage  />} />
+            
+            
             
         
           </Routes>

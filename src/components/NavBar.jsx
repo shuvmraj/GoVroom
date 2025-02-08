@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, Info, Car, MessageCircleQuestion, Users, Mail, LogIn, UserPlus, Menu } from 'lucide-react';
+import { 
+  Home, 
+  Info, 
+  Car, 
+  MessageCircleQuestion, 
+  Users, 
+  Mail, 
+  LogIn, 
+  UserPlus, 
+  Menu 
+} from 'lucide-react';
 import logo from "../assets/Logos/Logo.png";
 
 const NavBar = () => {
@@ -33,7 +43,7 @@ const NavBar = () => {
         </div>
 
         {/* Menu Items (Desktop) */}
-        <div className="md:flex space-x-8 items-center relative hidden">
+        <div className="hidden md:flex space-x-8 items-center relative">
           {navItems.map((item, index) => (
             <div key={index} className="relative group">
               <NavItem 
