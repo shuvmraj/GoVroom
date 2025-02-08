@@ -57,7 +57,7 @@ const NavBar = () => {
 
         {/* Authentication Links (Desktop) */}
         <div className="hidden md:flex items-center space-x-6">
-          <AuthLink icon={<LogIn size={20} />} text="Sign In" path="/signin" />
+          <AuthLink icon={<LogIn size={20} />} text="Sign In" path="/login" />
           <AuthLink icon={<UserPlus size={20} />} text="Register" path="/register" />
         </div>
       </div>
@@ -75,7 +75,7 @@ const NavBar = () => {
             </Link>
           ))}
           <div className="flex flex-col items-center mt-4 space-y-2">
-            <AuthLink icon={<LogIn size={20} />} text="Sign In" path="/signin" />
+            <AuthLink icon={<LogIn size={20} />} text="Sign In" path="/login" />
             <AuthLink icon={<UserPlus size={20} />} text="Register" path="/register" />
           </div>
         </div>
