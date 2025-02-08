@@ -8,6 +8,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
+import Contact from "./components/Contact";
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
             <Route path="/" element={<Hero />} />
             <Route path="/about" element={<About />} />
             <Route path="/testimonials" element={<Testimonials />} />
-        
+            <Route path="/contact" element={<Contact  />} />
         
           </Routes>
         </div>

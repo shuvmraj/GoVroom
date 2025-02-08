@@ -60,38 +60,40 @@ const StarRating = ({ rating }) => (
 
 const Testimonials = () => {
   return (
-    <section id = "testimonials"className="bg-white py-0">
-      <div className="max-w-5xl mx-auto px-4">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-3">
-            Customer Testimonials
-          </h2>
-          <p className="text-blue-600 max-w-xl mx-auto">
-            Hear from our satisfied customers who've experienced exceptional service
-          </p>
-        </div>
+    <section id="testimonials" className="relative min-h-screen bg-gradient-to-r from-blue-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-5xl font-bold text-gray-800 mb-3">
+              Customer Testimonials
+            </h2>
+            <p className="text-blue-600 text-lg max-w-xl mx-auto">
+              Hear from our satisfied customers who've experienced exceptional service
+            </p>
+          </div>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 ">
-          {testimonials.map((testimonial, index) => (
-            <div 
-              key={index} 
-              className="bg-blue-100 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 p-4"
-            >
-              <div className="flex items-center mb-3">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.reviewer}
-                  className="w-10 h-10 rounded-full mr-3 object-cover"
-                />
-                <div>
-                  <h3 className="text-md font-semibold text-gray-800">{testimonial.name}</h3>
-                  <p className="text-xs text-gray-500">{testimonial.reviewer}</p>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 overflow-y-auto max-h-[calc(100vh-200px)] pb-8 scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-transparent">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={index} 
+                className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6"
+              >
+                <div className="flex items-center mb-4">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.reviewer}
+                    className="w-12 h-12 rounded-full mr-4 object-cover"
+                  />
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800">{testimonial.name}</h3>
+                    <p className="text-sm text-gray-500">{testimonial.reviewer}</p>
+                  </div>
                 </div>
+                <StarRating rating={testimonial.rating} />
+                <p className="text-gray-600 mt-3 text-sm leading-relaxed italic">"{testimonial.review}"</p>
               </div>
-              <StarRating rating={testimonial.rating} />
-              <p className="text-gray-600 mt-2 text-sm italic">"{testimonial.review}"</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

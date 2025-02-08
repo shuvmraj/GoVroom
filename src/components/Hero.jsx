@@ -5,10 +5,30 @@ import skylineImage from '../assets/skyline.png';
 const Hero = () => {
   return (
     <div className="fixed inset-0 w-full h-full bg-gradient-to-r from-blue-50 to-white overflow-hidden">
+      {/* First, we define our custom animation keyframes */}
+      <style>
+        {`
+          @keyframes slideInFromRight {
+            0% {
+              transform: translateX(100%);
+              opacity: 0;
+            }
+            100% {
+              transform: translateX(0);
+              opacity: 1;
+            }
+          }
+
+          .slide-in-right {
+            animation: slideInFromRight 1s ease-out forwards;
+          }
+        `}
+      </style>
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="space-y-6 text-left">
+          <div className="space-y-6 text-left lg:pr-12">
             <h2 className="text-lg font-medium text-blue-600">Plan your trip now</h2>
 
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
@@ -37,21 +57,26 @@ const Hero = () => {
           </div>
 
           {/* Right Column - Car and Skyline Images */}
-          <div className="relative z-10 flex justify-center">
-            {/* Skyline (Behind Car) */}
-            <img 
-              src={skylineImage} 
-              alt="City Skyline" 
-              className="absolute bottom-16 left-1/2 transform -translate-x-1/2 w-[100%] opacity-30"
-            />
+          <div className="relative z-10 flex justify-end">
+            {/* Container for image positioning */}
+            <div className="relative w-full flex justify-end pr-0 lg:pr-0">
+              {/* Skyline (Behind Car) */}
+              <img 
+                src={skylineImage} 
+                alt="City Skyline" 
+                className="absolute bottom-16 left-1/2 transform -translate-x-56 w-[120%] opacity-30"
+              />
 
-            {/* Car (In Front) */}
-            <img 
-              src={carImage} 
-              alt="Car Image" 
-              className="relative w-full max-w-lg object-contain transform 
-                hover:scale-105 transition-transform duration-500 drop-shadow-2xl"
-            />
+              {/* Car (In Front) - Now with entrance animation */}
+              <div className="relative w-full max-w-lg slide-in-right">
+                <img 
+                  src={carImage} 
+                  alt="Car Image" 
+                  className="w-full object-contain transform translate-x-8 lg:translate-x-16
+                    hover:scale-105 transition-transform duration-500 drop-shadow-2xl"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
