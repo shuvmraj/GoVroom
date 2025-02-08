@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+
+// Replace these with your actual EmailJS credentials
+const EMAILJS_SERVICE_ID = "service_im7hr54";
+const EMAILJS_TEMPLATE_ID = "template_37ltr8m";
+const EMAILJS_PUBLIC_KEY = "3W6tlghvMbFIf1QY8";
 
 const contactInfo = [
   {
@@ -25,6 +31,56 @@ const contactInfo = [
 ];
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [status, setStatus] = useState({
+    loading: false,
+    error: null,
+    success: false
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ loading: true, error: null, success: false });
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      setStatus({ loading: false, error: null, success: true });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setStatus(prev => ({ ...prev, success: false }));
+      }, 5000);
+
+    } catch (error) {
+      setStatus({ loading: false, error: 'Failed to send message. Please try again.', success: false });
+    }
+  };
+
   return (
     <div className="relative min-h-screen bg-gradient-to-r from-blue-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -40,7 +96,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Form */}
           <div className="lg:col-span-2 bg-white rounded-xl shadow-xl p-8">
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -48,8 +104,12 @@ const Contact = () => {
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                     placeholder="John Doe"
+                    required
                   />
                 </div>
                 <div>
@@ -58,8 +118,12 @@ const Contact = () => {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                     placeholder="john@example.com"
+                    required
                   />
                 </div>
               </div>
@@ -70,8 +134,12 @@ const Contact = () => {
                 </label>
                 <input
                   type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                   placeholder="How can we help?"
+                  required
                 />
               </div>
 
@@ -80,18 +148,32 @@ const Contact = () => {
                   Message
                 </label>
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   rows="4"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                   placeholder="Write your message here..."
+                  required
                 />
               </div>
 
+              {status.error && (
+                <div className="text-red-500 text-sm">{status.error}</div>
+              )}
+              
+              {status.success && (
+                <div className="text-green-500 text-sm">Message sent successfully!</div>
+              )}
+
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-blue-600 text-white rounded-lg
-                  hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center gap-2 text-lg font-medium"
+                disabled={status.loading}
+                className={`w-full px-8 py-4 bg-blue-600 text-white rounded-lg
+                  hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center gap-2 text-lg font-medium
+                  ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
-                Send Message
+                {status.loading ? 'Sending...' : 'Send Message'}
                 <Send className="w-5 h-5" />
               </button>
             </form>
