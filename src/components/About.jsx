@@ -22,12 +22,12 @@ const About = () => {
             {/* Left Column - Image and Stats */}
             <div className="relative">
               <div className="space-y-8">
-                <img 
+                <img
                   src={carFleetImage}
                   alt="Our Car Fleet"
                   className="w-full rounded-lg shadow-xl object-contain max-h-[40vh]"
                 />
-                
+
                 <div className="bg-white p-6 rounded-lg shadow-xl w-full">
                   <div className="grid grid-cols-3 gap-8">
                     {stats.map((stat, index) => (
@@ -49,8 +49,8 @@ const About = () => {
               </h1>
 
               <p className="text-base lg:text-lg text-gray-700">
-                Discover the best deals you'll ever find with our unbeatable offers. 
-                We're dedicated to providing you with the best value for your money, 
+                Discover the best deals you'll ever find with our unbeatable offers.
+                We're dedicated to providing you with the best value for your money,
                 so you can enjoy high-quality services and products without breaking the bank.
               </p>
 
@@ -69,8 +69,8 @@ const About = () => {
                 </div>
 
                 {/* Contact Operator Section */}
-                <Link 
-                  to="/contact" 
+                <Link
+                  to="/contact"
                   className="cursor-pointer block rounded-lg hover:bg-gray-100 transition-colors duration-300"
                 >
                   <div className="flex items-center gap-4 p-4">
@@ -88,16 +88,18 @@ const About = () => {
               </div>
 
               {/* Find Details Button (Now Clickable with Hover Effect) */}
-              <Link 
+              {/* Find Details Button (Now Smaller) */}
+              <Link
                 to="/detail"
                 className="mt-6 block rounded-lg hover:bg-gray-100 transition-colors duration-300"
               >
-                <div className="flex items-center gap-2 px-6 py-3 lg:px-8 lg:py-4 bg-blue-600 text-white rounded-md 
-                  hover:bg-blue-700 transition-colors duration-300 text-base lg:text-lg font-medium">
+                <div className="flex items-center gap-2 px-4 py-2 lg:px-6 lg:py-3 bg-blue-600 text-white rounded-md 
+    hover:bg-blue-700 transition-colors duration-300 text-sm lg:text-base font-medium">
                   Find Details
                   <span className="transform rotate-90">›</span>
                 </div>
               </Link>
+
             </div>
           </div>
         </div>
