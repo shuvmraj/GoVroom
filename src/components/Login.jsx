@@ -156,7 +156,7 @@ const Login = () => {
                        <img 
                          src={skylineImage} 
                          alt="City Skyline" 
-                         className="absolute bottom-8 lg:bottom-16 left-1/2 transform -translate-x-1/2 lg:-translate-x-56 w-[120%] opacity-30"
+                         className="absolute bottom-8 lg:bottom-16 left-1/2 transform -translate-x-56 lg:-translate-x-56 w-[120%] opacity-30"
                        />
          
                        {/* Car (In Front) */}

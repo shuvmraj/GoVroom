@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import carImage from '../assets/car.png';
 import skylineImage from '../assets/skyline.png';
 
@@ -47,11 +48,14 @@ const Hero = () => {
                 <span className="w-2 h-2 bg-white rounded-full"></span>
               </button>
 
-              <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gray-900 text-white rounded-md 
-                hover:bg-gray-800 transition-colors duration-300 flex items-center gap-2 text-base sm:text-lg font-medium">
-                Learn More
-                <span className="transform rotate-90">›</span>
-              </button>
+              {/* Wrap the Learn More button with Link to navigate to /about */}
+              <Link to="/about">
+                <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gray-900 text-white rounded-md 
+                  hover:bg-gray-800 transition-colors duration-300 flex items-center gap-2 text-base sm:text-lg font-medium">
+                  Learn More
+                  <span className="transform rotate-90">›</span>
+                </button>
+              </Link>
             </div>
           </div>
 

@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import Contact from "./components/Contact";
 import LoginPage from "./components/Login";
 import Register from "./components/Register";
+import Detail from "./components/Details";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/contact" element={<Contact  />} />
+            <Route path="/detail" element={<Detail  />} />
             
             
             

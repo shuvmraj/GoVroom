@@ -22,8 +22,9 @@ const NavBar = () => {
     { icon: <Info size={24} />, text: "About", path: "/about" },
     { icon: <Car size={24} />, text: "Vehicle Models", path: "/vehicle-models" },
     { icon: <MessageCircleQuestion size={24} />, text: "Testimonials", path: "/testimonials" },
+    { icon: <Mail size={24} />, text: "Contact", path: "/contact" },
     { icon: <Users size={24} />, text: "Our Team", path: "/our-team" },
-    { icon: <Mail size={24} />, text: "Contact", path: "/contact" }
+    
   ];
 
   return (

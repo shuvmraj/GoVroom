@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import carFleetImage from '../assets/cars.png';
 
 const About = () => {
@@ -9,32 +10,24 @@ const About = () => {
   ];
 
   return (
-    // The main container uses conditional positioning based on screen size
-    // On mobile (default): relative positioning with normal document flow
-    // On larger screens (lg:): fixed positioning with hidden overflow
     <div className="relative min-h-screen lg:fixed lg:inset-0 bg-gradient-to-r from-blue-50 to-white lg:overflow-hidden overflow-auto">
       <div className="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-0">
-        {/* Main content container */}
         <div className="h-full flex flex-col justify-center">
-          {/* Centered About Us heading */}
           <h2 className="text-2xl font-medium text-blue-600 text-center mb-12 pt-8 lg:pt-0">
             <span className="text-black text-5xl lg:text-6xl font-bold">About</span>
             <span className="text-blue-600 text-5xl lg:text-6xl font-bold"> Us</span>
           </h2>
 
-          {/* Grid container for main content */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left Column - Image and Stats */}
             <div className="relative">
               <div className="space-y-8">
-                {/* Main car fleet image */}
                 <img 
                   src={carFleetImage}
                   alt="Our Car Fleet"
                   className="w-full rounded-lg shadow-xl object-contain max-h-[40vh]"
                 />
                 
-                {/* Statistics section */}
                 <div className="bg-white p-6 rounded-lg shadow-xl w-full">
                   <div className="grid grid-cols-3 gap-8">
                     {stats.map((stat, index) => (
@@ -62,6 +55,7 @@ const About = () => {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Select Car Section */}
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-100 rounded-full flex items-center justify-center">
                     <svg className="w-5 h-5 lg:w-6 lg:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,24 +68,36 @@ const About = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <svg className="w-5 h-5 lg:w-6 lg:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </svg>
+                {/* Contact Operator Section */}
+                <Link 
+                  to="/contact" 
+                  className="cursor-pointer block rounded-lg hover:bg-gray-100 transition-colors duration-300"
+                >
+                  <div className="flex items-center gap-4 p-4">
+                    <div className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                      <svg className="w-5 h-5 lg:w-6 lg:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Contact Operator</h3>
+                      <p className="text-sm text-gray-600">Our team is ready to help 24/7</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Contact Operator</h3>
-                    <p className="text-sm text-gray-600">Our team is ready to help 24/7</p>
-                  </div>
-                </div>
+                </Link>
               </div>
 
-              <button className="mt-6 px-6 py-3 lg:px-8 lg:py-4 bg-blue-600 text-white rounded-md 
-                hover:bg-blue-700 transition-colors duration-300 flex items-center gap-2 text-base lg:text-lg font-medium">
-                Find Details
-                <span className="transform rotate-90">›</span>
-              </button>
+              {/* Find Details Button (Now Clickable with Hover Effect) */}
+              <Link 
+                to="/detail"
+                className="mt-6 block rounded-lg hover:bg-gray-100 transition-colors duration-300"
+              >
+                <div className="flex items-center gap-2 px-6 py-3 lg:px-8 lg:py-4 bg-blue-600 text-white rounded-md 
+                  hover:bg-blue-700 transition-colors duration-300 text-base lg:text-lg font-medium">
+                  Find Details
+                  <span className="transform rotate-90">›</span>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
