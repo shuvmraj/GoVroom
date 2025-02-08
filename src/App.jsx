@@ -9,6 +9,7 @@ import About from "./components/About";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import Contact from "./components/Contact";
+import LoginPage from "./components/auth/Login";
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/contact" element={<Contact  />} />
+            <Route path="/login" element={<LoginPage  />} />
+            
         
           </Routes>
         </div>
