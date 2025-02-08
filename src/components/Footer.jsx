@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -10,16 +10,14 @@ const Footer = () => {
           © {new Date().getFullYear()} GoVroom. All Rights Reserved.
         </div>
 
-        {/* Right Side - GitHub Link */}
-        <a 
-          href="https://github.com/shuvmraj/Frontent" 
-          target="_blank" 
-          rel="noopener noreferrer"
+        {/* Right Side - Back Button */}
+        <button 
+          onClick={() => window.history.back()} 
           className="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300"
         >
-          <Github className="h-4 w-4 mr-2" />
-          <span className="text-sm">GitHub</span>
-        </a>
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          <span className="text-sm">Back</span>
+        </button>
       </div>
     </footer>
   );
