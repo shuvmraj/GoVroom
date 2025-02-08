@@ -9,7 +9,7 @@ import About from "./components/About";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import Contact from "./components/Contact";
-import LoginPage from "./components/auth/Login";
+import LoginPage from "./components/Login";
 
 
 function App() {

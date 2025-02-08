@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import carImage from '/Users/shubhamraj/Desktop/fsadproj/Frontend/GoVroom/src/assets/car.png';
-import skylineImage from '/Users/shubhamraj/Desktop/fsadproj/Frontend/GoVroom/src/assets/skyline.png';
+import carImage from '../assets/car.png';
+import skylineImage from '../assets/skyline.png';
 
 const Login = () => {
   const [formData, setFormData] = useState({
