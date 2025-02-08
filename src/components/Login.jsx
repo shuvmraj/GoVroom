@@ -19,16 +19,13 @@ const Login = () => {
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // Successful login
         localStorage.setItem('token', data.token);
         window.location.href = '/dashboard';
       } else {
@@ -42,14 +39,30 @@ const Login = () => {
   };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
     <div className="relative lg:fixed lg:inset-0 w-full min-h-screen bg-gradient-to-r from-blue-50 to-white overflow-hidden">
+      {/* Animation Keyframes & Class */}
+      <style>
+        {`
+          @keyframes slideInFromRight {
+            0% {
+              transform: translateX(100%);
+              opacity: 0;
+            }
+            100% {
+              transform: translateX(0);
+              opacity: 1;
+            }
+          }
+          .slide-in-right {
+            animation: slideInFromRight 1s ease-out forwards;
+          }
+        `}
+      </style>
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Login Form */}
@@ -137,26 +150,26 @@ const Login = () => {
           </div>
 
           {/* Right Column - Car and Skyline Images */}
-          <div className="relative z-10 hidden lg:flex justify-end">
-            <div className="relative w-full flex justify-end">
-              {/* Skyline Background */}
-              <img 
-                src={skylineImage} 
-                alt="City Skyline" 
-                className="absolute bottom-16 left-1/2 transform -translate-x-56 w-[120%] opacity-30"
-              />
-              
-              {/* Car Image */}
-              <div className="relative w-full max-w-lg">
-                <img 
-                  src={carImage} 
-                  alt="Luxury Car" 
-                  className="w-full object-contain transform translate-x-16
-                    hover:scale-105 transition-transform duration-500 drop-shadow-2xl"
-                />
-              </div>
-            </div>
-          </div>
+                   <div className="relative z-10 flex justify-end mt-8 lg:mt-0">
+                     <div className="relative w-full flex justify-end">
+                       {/* Skyline (Behind Car) */}
+                       <img 
+                         src={skylineImage} 
+                         alt="City Skyline" 
+                         className="absolute bottom-8 lg:bottom-16 left-1/2 transform -translate-x-1/2 lg:-translate-x-56 w-[120%] opacity-30"
+                       />
+         
+                       {/* Car (In Front) */}
+                       <div className="relative w-full max-w-sm lg:max-w-lg slide-in-right">
+                         <img 
+                           src={carImage} 
+                           alt="Car Image" 
+                           className="w-full object-contain transform translate-x-4 lg:translate-x-16
+                             hover:scale-105 transition-transform duration-500 drop-shadow-2xl"
+                         />
+                       </div>
+                     </div>
+                   </div>
         </div>
       </div>
     </div>
