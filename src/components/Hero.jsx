@@ -5,7 +5,7 @@ import skylineImage from '../assets/skyline.png';
 
 const Hero = () => {
   return (
-    <div className="relative lg:fixed lg:inset-0 w-full min-h-screen bg-gradient-to-r from-blue-50 to-white">
+    <div className="lg:fixed lg:inset-0 w-full min-h-screen bg-gradient-to-r from-blue-200 to-blue-50">
       <style>
         {`
           @keyframes slideInFromRight {
@@ -31,7 +31,7 @@ const Hero = () => {
           <div className="space-y-6 text-left lg:pr-12 pt-8 lg:pt-0">
             <h2 className="text-lg font-medium text-blue-600">Plan your trip now</h2>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-6xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
               Save <span className="text-blue-600">big</span> with our
               <br /> car rental
             </h1>
@@ -66,7 +66,7 @@ const Hero = () => {
               <img 
                 src={skylineImage} 
                 alt="City Skyline" 
-                className="absolute bottom-8 lg:bottom-16 left-1/2 transform -translate-x-1/2 lg:-translate-x-56 w-[120%] opacity-30"
+                className="absolute bottom-8 lg:bottom-16 left-1/2 transform -translate-x-1/2 lg:-translate-x-68 w-[120%] opacity-30"
               />
 
               {/* Car (In Front) */}
@@ -74,7 +74,7 @@ const Hero = () => {
                 <img 
                   src={carImage} 
                   alt="Car Image" 
-                  className="w-full object-contain transform translate-x-4 lg:translate-x-16
+                  className="w-full object-contain transform translate-x-4 lg:translate-x-0
                     hover:scale-105 transition-transform duration-500 drop-shadow-2xl"
                 />
               </div>
