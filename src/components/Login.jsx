@@ -43,7 +43,7 @@ const Login = () => {
   };
 
   return (
-    <div className="relative lg:fixed lg:inset-0 w-full min-h-screen bg-gradient-to-r from-blue-50 to-white overflow-hidden">
+    <div className="relative lg:fixed lg:inset-0 w-full min-h-screen bg-gradient-to-r from-blue-200 to-blue-50 overflow-hidden">
       {/* Animation Keyframes & Class */}
       <style>
         {`
